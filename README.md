@@ -7,7 +7,7 @@ For details, please refer to [our paper](https://arxiv.org/pdf/2202.13876.pdf).
 
 ## Download Data & Data Format
 
-You are free to [download the dataset](https://drive.google.com/file/d/1BnZT3MaOry-92Kj4pzC7u1bFYCpNn0ct/view?usp=sharing) (including patient summaries and training/dev/test data for ReCDS benchmark) without any data usage agreement. 
+You are free to [download the dataset](https://drive.google.com/file/d/1v8jp_AU9xxn5To36vaM8pbnlR4KtoLHX/view?usp=share_link) (including patient summaries and training/dev/test data for ReCDS benchmark) without any data usage agreement. 
 
 After downloading, please unzip the data and keep the `datasets` folder in this root directory if you are using the provided evaluation code. Here are some details about data format:
 
@@ -77,7 +77,7 @@ where `task` parameter should be "PAR" or "PPR" and `split` parameter indicates 
 You can also copy the code in `evaluation.py` and integrate the evaluation process into your training pipeline since it can be tedious and a waste of disk space to store retrieval results every time.
 Just make sure you load the correct data and keep your results in the above format.
 
-To submit to our [leaderboard](https://pmc-patients.github.io/), please send an email that contains the retrieval scores and a brief description of the system to ZhengyunZhao via zhengyun21@mails.tsinghua.edu.cn.
+To submit to our [leaderboard](https://pmc-patients.github.io/), please send an email that contains the retrieval scores and a brief description of the system to Zhengyun Zhao via zhengyun21@mails.tsinghua.edu.cn.
 
 ## Citation
 If you find PMC-Patients helpful in your research, please cite our work by:
