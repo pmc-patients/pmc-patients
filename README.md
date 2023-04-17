@@ -79,6 +79,10 @@ Just make sure you load the correct data and keep your results in the above form
 
 To submit to our [leaderboard](https://pmc-patients.github.io/), please send an email that contains the retrieval scores and a brief description of the system to Zhengyun Zhao via zhengyun21@mails.tsinghua.edu.cn.
 
+## Dataset Collection & Baseline Retrievers
+If you are interested in the dataset collection process or reproducing the baseline retrievers in our paper, please refer to our [code repo](https://github.com/zhao-zy15/PMC-Patients).
+
+
 ## Citation
 If you find PMC-Patients helpful in your research, please cite our work by:
 ```
