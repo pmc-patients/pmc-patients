@@ -86,10 +86,10 @@ If you are interested in the dataset collection process or reproducing the basel
 ## Citation
 If you find PMC-Patients helpful in your research, please cite our work by:
 ```
-@misc{zhao2022pmcpatients,
-      title={PMC-Patients: A Large-scale Dataset of Patient Notes and Relations Extracted from Case Reports in PubMed Central}, 
-      author={Zhengyun Zhao and Qiao Jin and Sheng Yu},
-      year={2022},
+@misc{zhao2023pmcpatients,
+      title={PMC-Patients: A Large-scale Dataset of Patient Summaries and Relations for Benchmarking Retrieval-based Clinical Decision Support Systems}, 
+      author={Zhengyun Zhao and Qiao Jin and Fangyuan Chen and Tuorui Peng and Sheng Yu},
+      year={2023},
       eprint={2202.13876},
       archivePrefix={arXiv},
       primaryClass={cs.CL}
