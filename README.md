@@ -3,33 +3,57 @@
 PMC-Patients is a first-of-its-kind dataset consisting of 167k patient summaries extracted from case reports in PubMed Central (PMC), 3.1M patient-article relevance and 293k patient-patient similarity annotations defined by PubMed citation graph.
 
 Based on PMC-Patients, we define two tasks to benchmark Retrieval-based Clinical Decision Support (ReCDS) systems: Patient-to-Article Retrieval (PAR) and Patient-to-Patient Retrieval (PPR).
-For details, please refer to [our paper](https://arxiv.org/pdf/2202.13876.pdf).
+For details, please refer to [our paper](https://arxiv.org/abs/2202.13876).
 
 ## Download Data & Data Format
 
-You are free to [download the dataset](https://drive.google.com/file/d/1v8jp_AU9xxn5To36vaM8pbnlR4KtoLHX/view?usp=share_link) (including patient summaries and training/dev/test data for ReCDS benchmark) without any data usage agreement. 
+You are free to download the dataset via either [Figshare](https://figshare.com/collections/PMC-Patients/6723465) or [Hugginface](https://huggingface.co/zhengyun21) (including patient summaries and training/dev/test data for ReCDS benchmark) without any data usage agreement. 
 
 After downloading, please unzip the data and keep the `datasets` folder in this root directory if you are using the provided evaluation code. Here are some details about data format:
 
+## PMC-Patients Dataset
 
-### PMC-Paitents.json
+The core file of our dataset, containing the patient summaries, demographics, and relational annotations.
 
-This file contains all information about patients summaries in PMC-Patients, which is a list of dict with keys:
+### PMC-Patients.json
+Patient summaries are presented as a `json` file, which is a list of dictionaries with the following keys:
 - `patient_id`: string. A continuous id of patients, starting from 0.
-- `patient_uid`: string. Unique ID for each patient, with format PMID-x, where PMID is the PubMed Identifier of the source article of the patient and x denotes index of the patient in source article.
+- `patient_uid`: string. Unique ID for each patient, with format PMID-x, where PMID is the PubMed Identifier of source article of the note and x denotes index of the note in source article.
 - `PMID`: string. PMID for source article.
 - `file_path`: string. File path of xml file of source article.
 - `title`: string. Source article title.
-- `patient`: string. Patient summary.
+- `patient`: string. Patient note.
 - `age`: list of tuples. Each entry is in format `(value, unit)` where value is a float number and unit is in 'year', 'month', 'week', 'day' and 'hour' indicating age unit. For example, `[[1.0, 'year'], [2.0, 'month']]` indicating the patient is a one-year- and two-month-old infant.
 - `gender`: 'M' or 'F'. Male or Female.
+- `relevant_articles`: dict. The key is PMID of the relevant articles and the corresponding value is its relevance score (2 or 1 as defined in the ``Methods'' section).
+- `similar_patients`: dict. The key is patient_uid of the similar patients and the corresponding value is its similarity score (2 or 1 as defined in the ``Methods'' section).
 
 
-### PAR & PPR Datasets
+## PMC-Patients ReCDS Benchmark
 
-We present data of the two retrieval tasks in exactly the same format as [BEIR](https://github.com/beir-cellar/beir/wiki/Load-your-custom-dataset). we refer the readers to their wiki page for the data format.
+The PMC-Patients ReCDS benchmark is presented as retrieval tasks and the data format is the same as [BEIR](https://github.com/beir-cellar/beir) benchmark. 
+To be specific, there are queries, corpus, and qrels (annotations).
 
-The PAR and PPR tasks share queries and query splits. The `_id` field for queries and PPR corpus is `patient_uid` in PMC-Patients, and the `_id` for PAR corpus is the PMID of the article.
+### Queries
+
+ReCDS-PAR and ReCDS-PPR tasks share the same query patient set and dataset split.
+For each split (train, dev, and test), queries are stored a `jsonl` file that contains a list of dictionaries, each with two fields: 
+- `_id`: unique query identifier represented by patient_uid.
+- `text`: query text represented by patient summary text.
+
+### Corpus
+
+Corpus is shared by different splits. For ReCDS-PAR, the corpus contains 11.7M PubMed articles, and for ReCDS-PPR, the corpus contains 155.2k reference patients from PMC-Patients. The corpus is also presented by a `jsonl` file that contains a list of dictionaries with three fields:
+- `_id`:  unique document identifier represented by PMID of the PubMed article in ReCDS-PAR, and patient_uid of the candidate patient in ReCDS-PPR.
+- `title`: : title of the article in ReCDS-PAR, and empty string in ReCDS-PPR.
+- `text`: abstract of the article in ReCDS-PAR, and patient summary text in ReCDS-PPR.
+
+### Qrels
+
+Qrels are TREC-style retrieval annotation files in `tsv` format.
+A qrels file contains three tab-separated columns, i.e. the query identifier, corpus identifier, and score in this order. The scores (2 or 1) indicate the relevance level in ReCDS-PAR or similarity level in ReCDS-PPR.
+
+Note that the qrels may not be the same as `relevant_articles` and `similar_patients` in `PMC-Patients.json` due to dataset split (see our manuscript for details).
 
 
 ## Evaluation & Submission
