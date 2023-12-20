@@ -3,7 +3,7 @@
 PMC-Patients is a first-of-its-kind dataset consisting of 167k patient summaries extracted from case reports in PubMed Central (PMC), 3.1M patient-article relevance and 293k patient-patient similarity annotations defined by PubMed citation graph.
 
 Based on PMC-Patients, we define two tasks to benchmark Retrieval-based Clinical Decision Support (ReCDS) systems: Patient-to-Article Retrieval (PAR) and Patient-to-Patient Retrieval (PPR).
-For details, please refer to [our paper](https://arxiv.org/abs/2202.13876).
+For details, please refer to [our paper](https://www.nature.com/articles/s41597-023-02814-8).
 
 ## Download Data & Data Format
 
@@ -110,12 +110,15 @@ If you are interested in the dataset collection process or reproducing the basel
 ## Citation
 If you find PMC-Patients helpful in your research, please cite our work by:
 ```
-@misc{zhao2023pmcpatients,
-      title={PMC-Patients: A Large-scale Dataset of Patient Summaries and Relations for Benchmarking Retrieval-based Clinical Decision Support Systems}, 
-      author={Zhengyun Zhao and Qiao Jin and Fangyuan Chen and Tuorui Peng and Sheng Yu},
-      year={2023},
-      eprint={2202.13876},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@article{Zhao2023ALD,
+  title={A large-scale dataset of patient summaries for retrieval-based clinical decision support systems.},
+  author={Zhengyun Zhao and Qiao Jin and Fangyuan Chen and Tuorui Peng and Sheng Yu},
+  journal={Scientific data},
+  year={2023},
+  volume={10 1},
+  pages={
+          909
+        },
+  url={https://api.semanticscholar.org/CorpusID:266360591}
 }
 ```
